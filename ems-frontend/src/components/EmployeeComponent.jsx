@@ -22,7 +22,6 @@ const EmployeeComponent = () => {
     email: "",
   });
 
-  // ===================== FETCH EMPLOYEE =====================
   useEffect(() => {
     if (id) {
       getEmployee(id)
@@ -37,7 +36,6 @@ const EmployeeComponent = () => {
     }
   }, [id]);
 
-  // ===================== VALIDATION =====================
   const validForm = () => {
     let valid = true;
     const tempErrors = { ...errors };
@@ -61,7 +59,6 @@ const EmployeeComponent = () => {
     return valid;
   };
 
-  // ===================== SAVE / UPDATE =====================
   const saveOrUpdateEmployee = async (e) => {
     e.preventDefault();
     setError("");
@@ -89,7 +86,6 @@ const EmployeeComponent = () => {
     }
   };
 
-  // ===================== UI =====================
   return (
     <div className="container">
       <br />
