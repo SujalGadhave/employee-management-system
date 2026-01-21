@@ -7,25 +7,19 @@ const ListEmployeeComponents = () => {
 
   const navigate = useNavigate()
 
-  // ===== Data State =====
   const [employees, setEmployees] = useState([])
 
-  // ===== Pagination State =====
   const [page, setPage] = useState(0)
   const [size] = useState(5)
   const [totalPages, setTotalPages] = useState(0)
 
-  // ===== Sorting State =====
   const [sortBy, setSortBy] = useState('id')
   const [sortDir, setSortDir] = useState('asc')
 
-  // ===== Search State =====
   const [search, setSearch] = useState('')
 
-  // ===== UI State =====
   const [loading, setLoading] = useState(false)
 
-  // ===== Fetch Employees =====
   useEffect(() => {
     fetchEmployees()
   }, [page, sortBy, sortDir, search])
@@ -43,7 +37,6 @@ const ListEmployeeComponents = () => {
       .finally(() => setLoading(false))
   }
 
-  // ===== Navigation =====
   function addNewEmployee() {
     navigate('/add-employee')
   }
@@ -52,14 +45,12 @@ const ListEmployeeComponents = () => {
     navigate(`/edit-employee/${id}`)
   }
 
-  // ===== Delete =====
   function removeEmployee(id) {
     deleteEmployee(id)
       .then(() => fetchEmployees())
       .catch(error => console.error(error))
   }
 
-  // ===== Sorting =====
   function handleSort(column) {
     if (sortBy === column) {
       setSortDir(sortDir === 'asc' ? 'desc' : 'asc')
