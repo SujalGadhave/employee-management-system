@@ -62,20 +62,17 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ REQUIRED for password hashing
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ REQUIRED for AuthController (login)
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
-    // ✅ CORS configuration for React frontend
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 
