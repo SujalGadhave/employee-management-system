@@ -15,7 +15,6 @@ import java.util.Map;
 @Service
 public class JwtService {
 
-    // MUST be at least 32 chars for HS256
     private static final String SECRET =
             "mysecretkeymysecretkeymysecretkeymysecretkey";
 
@@ -25,7 +24,6 @@ public class JwtService {
         return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
-    // ===== TOKEN GENERATION =====
     public String generateToken(UserDetails userDetails) {
 
         Map<String, Object> claims = new HashMap<>();
@@ -43,7 +41,6 @@ public class JwtService {
                 .compact();
     }
 
-    // ===== VALIDATION =====
     public String extractUsername(String token) {
         return extractAllClaims(token).getSubject();
     }
